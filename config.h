@@ -3,22 +3,22 @@
 
 static int topbar = 1;                      /* -b  option; if 0, dmenu appears at bottom     */
 /* -fn option overrides fonts[0]; default X11 font or font set */
-static const int user_bh = 9;               /* add an defined amount of pixels to the bar height */
+static const int user_bh = 5;               /* add an defined amount of pixels to the bar height */
 static const char *fonts[] = {
 	"mono:size=10",
 	"NotoColorEmoji:pixelsize=8:antialias=true:autohint=true"
 };
-static const unsigned int bgalpha = 0xe0;
-static const unsigned int fgalpha = OPAQUE;
+static const unsigned int bgalpha = OPAQUE;
+static const unsigned int fgalpha = OPAQUE; //OPAQUE
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
 static const char *colors[SchemeLast][2] = {
 	/*     fg         bg       */
-	[SchemeNorm] = { "#000000", "#e5e5e5" },
-	[SchemeSel] = { "#000000", "#bfbfbf" },
-	[SchemeOut] = { "#000000", "#e5e5e5" },
+	[SchemeNorm] = { "#e6e1cf", "#0f1419" },
+	[SchemeSel] = { "#0f1419", "#36a3d9" },
+	[SchemeOut] = { "#e6e1cf", "#0f1419" },
 };
 static const unsigned int alphas[SchemeLast][2] = {
-	/*		fgalpha		bgalphga	*/
+	/*		fgalpha		bgalpha	*/
 	[SchemeNorm] = { fgalpha, bgalpha },
 	[SchemeSel] = { fgalpha, bgalpha },
 	[SchemeOut] = { fgalpha, bgalpha },
@@ -32,4 +32,3 @@ static unsigned int lines      = 0;
  * for example: " /?\"&[]"
  */
 static const char worddelimiters[] = " ";
-
