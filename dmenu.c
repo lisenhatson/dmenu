@@ -889,28 +889,27 @@ usage(void)
 
 void
 read_Xresources(void) {
-	XrmInitialize();
+    XrmInitialize();
 
-	char* xrm;
-	if ((xrm = XResourceManagerString(drw->dpy))) {
-		char *type;
-		XrmDatabase xdb = XrmGetStringDatabase(xrm);
-		XrmValue xval;
+    char* xrm;
+    if ((xrm = XResourceManagerString(drw->dpy))) {
+        char *type;
+        XrmDatabase xdb = XrmGetStringDatabase(xrm);
+        XrmValue xval;
 
-		if (XrmGetResource(xdb, "dmenu.font", "*", &type, &xval) == True) /* font or font set */
-			fonts[0] = strdup(xval.addr);
-		if (XrmGetResource(xdb, "dmenu.color0", "*", &type, &xval) == True)  /* normal background color */
-			colors[SchemeNorm][ColBg] = strdup(xval.addr);
-		if (XrmGetResource(xdb, "dmenu.color4", "*", &type, &xval) == True)  /* normal foreground color */
-			colors[SchemeNorm][ColFg] = strdup(xval.addr);
-		if (XrmGetResource(xdb, "dmenu.color4", "*", &type, &xval) == True)  /* selected background color */
-			colors[SchemeSel][ColBg] = strdup(xval.addr);
-		if (XrmGetResource(xdb, "dmenu.color0", "*", &type, &xval) == True)  /* selected foreground color */
-			colors[SchemeSel][ColFg] = strdup(xval.addr);
+        if (XrmGetResource(xdb, "dwm.normbgcolor", "String", &type, &xval) == True)
+            strncpy(normbgcolor, xval.addr, sizeof(normbgcolor) - 1);
+        if (XrmGetResource(xdb, "dwm.normfgcolor", "String", &type, &xval) == True)
+            strncpy(normfgcolor, xval.addr, sizeof(normfgcolor) - 1);
+        if (XrmGetResource(xdb, "dwm.selbgcolor", "String", &type, &xval) == True)
+            strncpy(selbgcolor, xval.addr, sizeof(selbgcolor) - 1);
+        if (XrmGetResource(xdb, "dwm.selfgcolor", "String", &type, &xval) == True)
+            strncpy(selfgcolor, xval.addr, sizeof(selfgcolor) - 1);
 
-		XrmDestroyDatabase(xdb);
-	}
+        XrmDestroyDatabase(xdb);
+    }
 }
+
 
 int
 main(int argc, char *argv[])

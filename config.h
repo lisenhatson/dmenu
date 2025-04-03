@@ -4,16 +4,21 @@
 static int topbar = 0;                      /* -b  option; if 0, dmenu appears at bottom     */
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = {
+    "uzura_font:size=12",
 	"monospace:size=10",
 	"NotoColorEmoji:pixelsize=8:antialias=true:autohint=true"
 };
 static const unsigned int bgalpha = OPAQUE;
 static const unsigned int fgalpha = OPAQUE;
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
+static char normbgcolor[] = "#222222";
+static char normfgcolor[] = "#bbbbbb";
+static char selbgcolor[] = "#005577";
+static char selfgcolor[] = "#eeeeee";
 static const char *colors[SchemeLast][2] = {
 	/*     fg         bg       */
-	[SchemeNorm] = { "#bbbbbb", "#222222" },
-	[SchemeSel] = { "#eeeeee", "#007558" },
+    [SchemeNorm] = { normfgcolor, normbgcolor },
+    [SchemeSel] = { selfgcolor, selbgcolor },
 	[SchemeOut] = { "#000000", "#00ffff" },
 };
 static const unsigned int alphas[SchemeLast][2] = {
